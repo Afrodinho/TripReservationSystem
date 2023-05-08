@@ -2,8 +2,8 @@ from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
+@app.route('/', methods=["GET", "POST"])
+def Form():
     return render_template('index.html')
 
 @app.route('/login')
@@ -22,13 +22,5 @@ def submit_form():
     elif option == 'reserve':
       return redirect('/reserve')
 
-'''
-Function to generate cost matrix for flights
-Input: none
-Output: Returns a 12 x 4 matrix of prices
-'''
-def get_cost_matrix():
-    cost_matrix = [[100, 75, 50, 100] for row in range(12)]
-    return cost_matrix
-
-app.run()
+if __name__ == "__app__":
+    app.run(host='0.0.0.0')
