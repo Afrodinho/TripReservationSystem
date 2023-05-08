@@ -1,6 +1,17 @@
 from flask import Flask, redirect, render_template, request
+import os
 
 app = Flask(__name__)
+
+def occupiedSeats():
+    reservedSeats = ""
+    count = 0
+    with open('TripReservationSystem/final_project_files/reservations.txt', 'r') as file:
+        for line in file.readlines():            
+            entries = line.split(',')
+            reservedSeats += f'{entries[1].strip()} {entries[2].strip()},'
+            count += 1
+    return [reservedSeats, count]
 
 @app.route('/')
 def home():
@@ -12,7 +23,9 @@ def login():
 
 @app.route('/reserve')
 def reserve():
-    return render_template('reserve.html')
+    reservedSeats = occupiedSeats()[0]
+    count = occupiedSeats()[1]
+    return render_template('reserve.html', reservedSeats = reservedSeats, count = count)
 
 @app.route('/', methods=['POST'])
 def submit_form():
@@ -30,5 +43,7 @@ Output: Returns a 12 x 4 matrix of prices
 def get_cost_matrix():
     cost_matrix = [[100, 75, 50, 100] for row in range(12)]
     return cost_matrix
+
+
 
 app.run()
