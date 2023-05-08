@@ -13,19 +13,10 @@ def occupiedSeats():
             count += 1
     return [reservedSeats, count]
 
+#Home Page
 @app.route('/')
 def home():
     return render_template('index.html')
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route('/reserve')
-def reserve():
-    reservedSeats = occupiedSeats()[0]
-    count = occupiedSeats()[1]
-    return render_template('reserve.html', reservedSeats = reservedSeats, count = count)
 
 @app.route('/', methods=['POST'])
 def submit_form():
@@ -34,6 +25,31 @@ def submit_form():
         return redirect('/login')
     elif option == 'reserve':
       return redirect('/reserve')
+
+#Log in Page
+# @app.route('/login')
+# def login():
+#     return render_template('login.html')
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+    with open('final_project_files/passcodes.txt','r') as file:
+        for line in file.readlines():
+            if username == username[0] and password == password[1]:
+                print("Sending you to the Admin page!")
+        print("You are not an Admin!")
+        return False
+
+#Reserve Page
+@app.route('/reserve')
+def reserve():
+    reservedSeats = occupiedSeats()[0]
+    count = occupiedSeats()[1]
+    return render_template('reserve.html', reservedSeats = reservedSeats, count = count)
+
+
 
 '''
 Function to generate cost matrix for flights

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login - IT-4320 Reservation System</title>
+	<title>IT-4320 Reservation System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<style>
@@ -46,43 +47,25 @@
 			margin: 0 auto;
 			max-width: 500px;
 			padding: 20px;
-			display: flex;
-			gap: 1em;
-			width: 20em;
 		}
+
 		form label {
 			display: block;
 			margin-bottom: 10px;
 		}
+
 		form select {
 			display: block;
 			margin-bottom: 20px;
 			width: 100%;
 		}
+
 		form input[type="submit"] {
 			background-color: black;
 			border: none;
 			color: white;
 			cursor: pointer;
 			padding: 10px 20px;
-		}
-		form div
-		{
-			flex: 2;
-			display: flex;
-			flex-direction: column;
-			gap: 0.5em;
-		}
-		form input
-		{
-			flex: 1;
-		}
-		.login-title-area
-		{
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
 		}
 	</style>
 	<nav>
@@ -92,19 +75,11 @@
 			<li><a href="/reserve">Reserve</a></li>
 		</ul>
 	</nav>
+	<div class="container">	
+	<form method="POST">
+        <h1>Welcome to the Administator Page</h1>
 
-	<div class="login-title-area">
-		<h1>Login</h1>
-		<h3>Hello! Login Here!</h3>
-	</div>
-	
-
-    <form action='' method= 'post'>
-		<div>
-			<input type="text" id="Username" name="Username" placeholder="Username"/>
-			<input type="password" id="password" name="password" placeholder="Password"/>
-		</div>
-		<input type="submit" name="Login" value="login">
 	</form>
+</div>
 </body>
 </html>
