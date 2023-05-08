@@ -186,7 +186,7 @@
  		<input type="text" id="lname" name="lname"><br><br>
 
 		<label for="option">Select a Row:</label>
-		<select name="option" id="option">
+		<select name="option" id="dropdown1" >
 			<option value="0">Rows</option>
 			<option value="1">Row 1</option>
 			<option value="2">Row 2</option>
@@ -203,7 +203,7 @@
 		</select>
 
 		<label for="option">Select a Seat:</label>
-		<select name="option" id="option">
+		<select name="option" id="dropdown2" >
 			<option value="0">Seats</option>
 			<option value="1">Seat 1</option>
 			<option value="2">Seat 2</option>
@@ -211,7 +211,7 @@
 			<option value="4">Seat 4</option>
 			
 		</select>
-			<input type="submit" value="Submit">
+			<input type="submit" value="Submit" id="submit-button">
 	</form>
 	
 </div>
@@ -274,6 +274,36 @@
 		else if (data[i] == "11 3") { document.getElementById("eleven-three").innerHTML = x}
 	}
 	
+	
+var submitButton = document.getElementById("submit-button");
+
+submitButton.addEventListener("click", function() {
+
+  var dropdown1 = document.getElementById("dropdown1");
+  var selectedValue1 = dropdown1.options[dropdown1.selectedIndex].value;
+
+  
+  var dropdown2 = document.getElementById("dropdown2");
+  var selectedValue2 = dropdown2.options[dropdown2.selectedIndex].value;
+
+
+  var firstName = document.getElementById("fname").value;
+
+ 
+  var lastName = document.getElementById("lname").value;
+
+  
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("POST", "/storeData", true);
+
+  
+  xhr.setRequestHeader("Content-Type", "text/plain");
+
+  
+  xhr.send(firstName + ',' + lastName + ',' + selectedValue1 + ',' + selectedValue2 );
+});
+
 </script>
 	
 </body>

@@ -45,5 +45,14 @@ def get_cost_matrix():
     return cost_matrix
 
 
+@app.route('/storeData', methods=['POST'])
+def Reservaation_Data():
+    data = request.data.decode('utf-8')
+    with open('TripReservationSystem/final_project_files/reservations.txt', 'a') as f:
+        f.write(data + '\n')
+    return 'Data stored successfully'
+
+
+
 
 app.run()
