@@ -46,9 +46,9 @@ Output: Returns a 12 x 4 matrix of prices
 
 
 @app.route('/storeData', methods=['POST'])
-def Reservaation_Data():
+def Reservation_Data():
     data = request.data.decode('utf-8')
-    with open('TripReservationSystem/final_project_files/reservations.txt', 'a') as f:
+    with open('final_project_files/reservations.txt', 'a') as f:
         f.write(data + '\n')
     return 'Data stored successfully'
 
