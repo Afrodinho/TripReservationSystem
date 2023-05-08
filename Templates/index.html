@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IT-4320 Reservation System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<style>
+		body {
+			background-color: lightgray;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		nav {
+			background-color: lightgrey;
+			border-bottom: .5px solid black;
+			color: red;
+			display: flex;
+			justify-content: space-between;
+			padding: 10px;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		nav li {
+			display: inline-block;
+			margin-right: 20px;
+		}
+
+		nav a {
+			color: red;
+			text-decoration: none;
+		}
+		.container{
+			padding-top: 50px;
+
+		}
+		form {			
+			background-color: white;
+			border: 1px solid black;
+			margin: 0 auto;
+			max-width: 500px;
+			padding: 20px;
+		}
+
+		form label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		form select {
+			display: block;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+
+		form input[type="submit"] {
+			background-color: black;
+			border: none;
+			color: white;
+			cursor: pointer;
+			padding: 10px 20px;
+		}
+	</style>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/login">Login</a></li>
+			<li><a href="/reserve">Reserve</a></li>
+		</ul>
+	</nav>
+	<div class="container">	
+	<form method="POST">
+        <h1>IT-4320 Reservation System</h1>
+		<label for="option">Select an option:</label>
+		<select name="option" id="option">
+			<option value="login">Login</option>
+			<option value="reserve">Reserve a Seat</option>
+		</select>
+			<input type="submit" value="Submit">
+	</form>
+</div>
+</body>
+</html>
