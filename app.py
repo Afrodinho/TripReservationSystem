@@ -6,7 +6,7 @@ app = Flask(__name__)
 def occupiedSeats():
     reservedSeats = ""
     count = 0
-    with open('TripReservationSystem/final_project_files/reservations.txt', 'r') as file:
+    with open('final_project_files/reservations.txt', 'r') as file:
         for line in file.readlines():            
             entries = line.split(',')
             reservedSeats += f'{entries[1].strip()} {entries[2].strip()},'
