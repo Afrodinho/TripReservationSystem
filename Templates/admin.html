@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>IT-4320 Reservation System</title>
+	<title>IT-4320 Reservation System - Administrator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -41,7 +41,7 @@
 			padding-top: 50px;
 
 		}
-		form {			
+		form {	
 			background-color: white;
 			border: 1px solid black;
 			margin: 0 auto;
@@ -67,67 +67,244 @@
 			cursor: pointer;
 			padding: 10px 20px;
 		}
-		.title{
+
+		.res{
 			text-align: center;
 			text-underline-position: below; 
-			font-size: x-large ;
+			font-size: large ;
 		}
-		table {
-        border-collapse: collapse;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-size: 12px;
-      }
-      td {
-        border: 1px solid black;
-        padding: 5px;
-      }
+
+		.SC{
+			font-size: large;
+		}
+
+		.XO{
+			font-size: small;
+		}
+
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			gap: 10px;
+			
+			padding: 10px;
+			margin: 10px;
+		}
+  
+		.grid-row {
+			flex-wrap: wrap;
+		}
 		
+		.grid-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: lightgray;
+			border: 1px solid gray;
+			font-size: 18px;
+			text-align: center;
+		}
 	</style>
 	<nav>
 		<ul>
-			<li><a href="/">Home</a></li>
+			<li><a href="/index">Home</a></li>
 			<li><a href="/login">Login</a></li>
 			<li><a href="/reserve">Reserve</a></li>
 		</ul>
 	</nav>
-	<div class="container">	
+	<div class="container">
 	<form method="POST">
-		<h1 class="title">Admin Page</h1>
-		<table id="grid">
-			<tbody>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			  <tr><td>["O", "O", "O", "O"]</td></tr>
-			</tbody>
-		  </table>
-		  <script>
-			
-			function updateGrid() {
-			  fetch('final_project_files/reservations.txt.txt')
-				.then(response => response.text())
-				.then(text => {
-				  const columns = text.split('\n')
-				  for (let i = 0; i < 12; i++) {
-					const values = columns[i].trim().split(',')
-					for (let j = 0; j < 4; j++) {
-					  const value = values[j].replace(/"/g, '').trim()
-					  document.getElementById('grid').rows[i].cells[j].textContent = value
-					}
-				  }
-				})
-			}
-		  </script>
+        <h1 class="res">Reserve Your Seat-Administration</h1>
 
+		<h2 class="SC">Seating Chart</h2>
+		<h2 class="XO">X = Reserved Seat O = Available Seat</h2>
+		
+		<div class="grid-container">
+			<div class="grid-row">
+			  <div class="grid-item" data-seat="1A" id="zero-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1B" id="one-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1C" id="two-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1D" id="three-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1E" id="four-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1F" id="five-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1G" id="six-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1H" id="seven-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1I" id="eight-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1J" id="nine-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1K" id="ten-zero">["O"]</div>
+			  <div class="grid-item" data-seat="1L" id="eleven-zero">["O"]</div>
+			</div>
+			<div class="grid-row">
+			  <div class="grid-item" data-seat="2A" id="zero-one">["O"]</div>
+			  <div class="grid-item" data-seat="2B" id="one-one">["O"]</div>
+			  <div class="grid-item" data-seat="2C" id="two-one">["O"]</div>
+			  <div class="grid-item" data-seat="2D" id="three-one">["O"]</div>
+			  <div class="grid-item" data-seat="2E" id="four-one">["O"]</div>
+			  <div class="grid-item" data-seat="2F" id="five-one">["O"]</div>
+			  <div class="grid-item" data-seat="2G" id="six-one">["O"]</div>
+			  <div class="grid-item" data-seat="2H" id="seven-one">["O"]</div>
+			  <div class="grid-item" data-seat="2I" id="eight-one">["O"]</div>
+			  <div class="grid-item" data-seat="2J" id="nine-one">["O"]</div>
+			  <div class="grid-item" data-seat="2K" id="ten-one">["O"]</div>
+			  <div class="grid-item" data-seat="2L" id="eleven-one">["O"]</div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-item" data-seat="3A" id="zero-two">["O"]</div>
+				<div class="grid-item" data-seat="3B" id="one-two">["O"]</div>
+				<div class="grid-item" data-seat="3C" id="two-two">["O"]</div>
+				<div class="grid-item" data-seat="3D" id="three-two">["O"]</div>
+				<div class="grid-item" data-seat="3E" id="four-two">["O"]</div>
+				<div class="grid-item" data-seat="3F" id="five-two">["O"]</div>
+				<div class="grid-item" data-seat="3G" id="six-two">["O"]</div>
+				<div class="grid-item" data-seat="3H" id="seven-two">["O"]</div>
+				<div class="grid-item" data-seat="3I" id="eight-two">["O"]</div>
+				<div class="grid-item" data-seat="3J" id="nine-two">["O"]</div>
+				<div class="grid-item" data-seat="3K" id="ten-two">["O"]</div>
+				<div class="grid-item" data-seat="3L" id="eleven-two">["O"]</div>
+			</div>		
+			<div class="grid-row">
+				<div class="grid-item" data-seat="4A" id="zero-three">["O"]</div>
+				<div class="grid-item" data-seat="4B" id="one-three">["O"]</div>
+				<div class="grid-item" data-seat="4C" id="two-three">["O"]</div>
+				<div class="grid-item" data-seat="4D" id="three-three">["O"]</div>
+				<div class="grid-item" data-seat="4E" id="four-three">["O"]</div>
+				<div class="grid-item" data-seat="4F" id="five-three">["O"]</div>
+				<div class="grid-item" data-seat="4G" id="six-three">["O"]</div>
+				<div class="grid-item" data-seat="4H" id="seven-three">["O"]</div>
+				<div class="grid-item" data-seat="4I" id="eight-three">["O"]</div>
+				<div class="grid-item" data-seat="4J" id="nine-three">["O"]</div>
+				<div class="grid-item" data-seat="4K" id="ten-three">["O"]</div>
+				<div class="grid-item" data-seat="4L" id="eleven-three">["O"]</div>
+			  </div>		  
+		  
+
+		</div>
+
+		<label for="fname">First name:</label>
+  		<input type="text" id="fname" name="fname"><br><br>
+  		<label for="lname">Last name:</label>
+ 		<input type="text" id="lname" name="lname"><br><br>
+
+		<label for="option">Select a Row:</label>
+		<select name="option" id="dropdown1" >
+			<option value="0">Rows</option>
+			<option value="1">Row 1</option>
+			<option value="2">Row 2</option>
+			<option value="3">Row 3</option>
+			<option value="4">Row 4</option>
+			<option value="5">Row 5</option>
+			<option value="6">Row 6</option>
+			<option value="7">Row 7</option>
+			<option value="8">Row 8</option>
+			<option value="9">Row 9</option>
+			<option value="10">Row 10</option>
+			<option value="11">Row 11</option>
+			<option value="12">Row 12</option>
+		</select>
+
+		<label for="option">Select a Seat:</label>
+		<select name="option" id="dropdown2" >
+			<option value="0">Seats</option>
+			<option value="1">Seat 1</option>
+			<option value="2">Seat 2</option>
+			<option value="3">Seat 3</option>
+			<option value="4">Seat 4</option>
+			
+		</select>
+		<button id="submit-button" type="button">Submit</button>
 	</form>
+	
 </div>
+
+<script>
+	data = "{{reservedSeats}}";
+	count = "{{count}}"
+	const x = '["X"]';
+	data = data.split(',');
+	string = ""
+	for (i = 0; i < count; i++)
+	{
+		if (data[i] == "0 0") { document.getElementById("zero-zero").innerHTML = x}
+		else if (data[i] == "0 1") { document.getElementById("zero-one").innerHTML = x}
+		else if (data[i] == "0 2") { document.getElementById("zero-two").innerHTML = x}
+		else if (data[i] == "0 3") { document.getElementById("zero-three").innerHTML = x}
+		else if (data[i] == "1 0") { document.getElementById("one-zero").innerHTML = x}
+		else if (data[i] == "1 1") { document.getElementById("one-one").innerHTML = x}
+		else if (data[i] == "1 2") { document.getElementById("one-two").innerHTML = x}
+		else if (data[i] == "1 3") { document.getElementById("one-three").innerHTML = x}
+		else if (data[i] == "2 0") { document.getElementById("two-zero").innerHTML = x}
+		else if (data[i] == "2 1") { document.getElementById("two-one").innerHTML = x}
+		else if (data[i] == "2 2") { document.getElementById("two-two").innerHTML = x}
+		else if (data[i] == "2 3") { document.getElementById("two-three").innerHTML = x}
+		else if (data[i] == "3 0") { document.getElementById("three-zero").innerHTML = x}
+		else if (data[i] == "3 1") { document.getElementById("three-one").innerHTML = x}
+		else if (data[i] == "3 2") { document.getElementById("three-two").innerHTML = x}
+		else if (data[i] == "3 3") { document.getElementById("three-three").innerHTML = x}
+		else if (data[i] == "4 0") { document.getElementById("four-zero").innerHTML = x}
+		else if (data[i] == "4 1") { document.getElementById("four-one").innerHTML = x}
+		else if (data[i] == "4 2") { document.getElementById("four-two").innerHTML = x}
+		else if (data[i] == "4 3") { document.getElementById("four-three").innerHTML = x}
+		else if (data[i] == "5 0") { document.getElementById("five-zero").innerHTML = x}
+		else if (data[i] == "5 1") { document.getElementById("five-one").innerHTML = x}
+		else if (data[i] == "5 2") { document.getElementById("five-two").innerHTML = x}
+		else if (data[i] == "5 3") { document.getElementById("five-three").innerHTML = x}
+		else if (data[i] == "6 0") { document.getElementById("six-zero").innerHTML = x}
+		else if (data[i] == "6 1") { document.getElementById("six-one").innerHTML = x}
+		else if (data[i] == "6 2") { document.getElementById("six-two").innerHTML = x}
+		else if (data[i] == "6 3") { document.getElementById("six-three").innerHTML = x}
+		else if (data[i] == "7 0") { document.getElementById("seven-zero").innerHTML = x}
+		else if (data[i] == "7 1") { document.getElementById("seven-one").innerHTML = x}
+		else if (data[i] == "7 2") { document.getElementById("seven-two").innerHTML = x}
+		else if (data[i] == "7 3") { document.getElementById("seven-three").innerHTML = x}
+		else if (data[i] == "8 0") { document.getElementById("eight-zero").innerHTML = x}
+		else if (data[i] == "8 1") { document.getElementById("eight-one").innerHTML = x}
+		else if (data[i] == "8 2") { document.getElementById("eight-two").innerHTML = x}
+		else if (data[i] == "8 3") { document.getElementById("eight-three").innerHTML = x}
+		else if (data[i] == "9 0") { document.getElementById("nine-zero").innerHTML = x}
+		else if (data[i] == "9 1") { document.getElementById("nine-one").innerHTML = x}
+		else if (data[i] == "9 2") { document.getElementById("nine-two").innerHTML = x}
+		else if (data[i] == "9 3") { document.getElementById("nine-three").innerHTML = x}
+		else if (data[i] == "10 0") { document.getElementById("ten-zero").innerHTML = x}
+		else if (data[i] == "10 1") { document.getElementById("ten-one").innerHTML = x}
+		else if (data[i] == "10 2") { document.getElementById("ten-two").innerHTML = x}
+		else if (data[i] == "10 3") { document.getElementById("ten-three").innerHTML = x}
+		else if (data[i] == "11 0") { document.getElementById("eleven-zero").innerHTML = x}
+		else if (data[i] == "11 1") { document.getElementById("eleven-one").innerHTML = x}
+		else if (data[i] == "11 2") { document.getElementById("eleven-two").innerHTML = x}
+		else if (data[i] == "11 3") { document.getElementById("eleven-three").innerHTML = x}
+	}
+	
+	
+var submitButton = document.getElementById("submit-button");
+
+submitButton.addEventListener("click", function() {
+
+  var dropdown1 = document.getElementById("dropdown1");
+  var selectedValue1 = dropdown1.options[dropdown1.selectedIndex].value;
+
+  
+  var dropdown2 = document.getElementById("dropdown2");
+  var selectedValue2 = dropdown2.options[dropdown2.selectedIndex].value;
+
+
+  var firstName = document.getElementById("fname").value;
+
+ 
+  var lastName = document.getElementById("lname").value;
+
+  
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("POST", "/storeData", true);
+
+  
+  xhr.setRequestHeader("Content-Type", "text/plain");
+
+  
+  xhr.send(firstName + ',' + lastName + ',' + selectedValue1 + ',' + selectedValue2 );
+});
+
+</script>
+	
 </body>
 </html>

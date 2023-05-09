@@ -45,11 +45,13 @@ def loginAuth():
                 return redirect('/admin')
     
     print("Invalid username or password!")
-    return redirect('/login')
+    return redirect('/admin')
 
 @app.route('/admin')
 def admin():
-    return 'Welcome to the admin page!'
+    reservedSeats = occupiedSeats()[0]
+    count = occupiedSeats()[1]
+    return render_template('admin.html')
 
 
 
