@@ -67,6 +67,21 @@
 			cursor: pointer;
 			padding: 10px 20px;
 		}
+		.title{
+			text-align: center;
+			text-underline-position: below; 
+			font-size: x-large ;
+		}
+		table {
+        border-collapse: collapse;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 12px;
+      }
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+		
 	</style>
 	<nav>
 		<ul>
@@ -77,7 +92,40 @@
 	</nav>
 	<div class="container">	
 	<form method="POST">
-        <h1>Welcome to the Administator Page</h1>
+		<h1 class="title">Admin Page</h1>
+		<table id="grid">
+			<tbody>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			  <tr><td>["O", "O", "O", "O"]</td></tr>
+			</tbody>
+		  </table>
+		  <script>
+			
+			function updateGrid() {
+			  fetch('final_project_files/reservations.txt.txt')
+				.then(response => response.text())
+				.then(text => {
+				  const columns = text.split('\n')
+				  for (let i = 0; i < 12; i++) {
+					const values = columns[i].trim().split(',')
+					for (let j = 0; j < 4; j++) {
+					  const value = values[j].replace(/"/g, '').trim()
+					  document.getElementById('grid').rows[i].cells[j].textContent = value
+					}
+				  }
+				})
+			}
+		  </script>
 
 	</form>
 </div>

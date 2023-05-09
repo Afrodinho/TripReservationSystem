@@ -1,17 +1,20 @@
 <html>
-    <head>
-        <title>Login</title>
+<head>
+    <title>Login</title>
 </head>
 <body>
     <?php
-    if (isset($_POST['Login'])){
-        $username ="Username: ".$_POST['username'].;
+    if (isset($_POST['Login'])) {
+        $username = "Username: " . $_POST['username'];
+        $password = "Password: " . $_POST['password'];
 
-        $password = "Password: ".$_POST['password']
         $passcodes = "passcodes.txt";
-        //Reading Passcodes.txt for admin information
-        $passcodeFile =fopen($passcodes, 'r');
-        fclose($passcodeFile)
+        // Reading Passcodes.txt for admin information
+        $passcodeFile = fopen($passcodes, 'r');
+        // Perform operations on file if needed
+        fclose($passcodeFile);
     }
-?>
+    ?>
     //redirect_to('reserve.html');
+</body>
+</html>

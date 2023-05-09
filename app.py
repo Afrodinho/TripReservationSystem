@@ -27,20 +27,31 @@ def submit_form():
       return redirect('/reserve')
 
 #Log in Page
-# @app.route('/login')
-# def login():
-#     return render_template('login.html')
-
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login')
 def login():
-    username = request.form['username']
+   return render_template('login.html')
+
+@app.route('/loginAuth', methods=['POST'])
+def loginAuth():
+    username = request.form['Username']
     password = request.form['password']
+    
     with open('final_project_files/passcodes.txt','r') as file:
-        for line in file.readlines():
-            if username == username[0] and password == password[1]:
+        for line in file:
+            line = line.strip()  # remove leading/trailing whitespace
+            user, pw = line.split(",")  # split line into username and password
+            if username == user and password == pw:
                 print("Sending you to the Admin page!")
-        print("You are not an Admin!")
-        return False
+                return redirect('/admin')
+    
+    print("Invalid username or password!")
+    return redirect('/login')
+
+@app.route('/admin')
+def admin():
+    return 'Welcome to the admin page!'
+
+
 
 #Reserve Page
 @app.route('/reserve')
