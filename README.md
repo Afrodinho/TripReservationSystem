@@ -16,3 +16,10 @@ In this project you will develop a web application using Flask in Docker or usin
 Scenario
 
 You and a number of IT students are going to a ski trip/hackathon over winter break in Colorado. To manage sign ups, the program has asked your team to create a simple web based reservation system so that students can reserve their seats on the bus. Students will be charged different amounts based on the seat they pick. You will be provided with a pricing chart for the seating.
+
+
+IF you would like to test the web app:
+
+1. Download Docker and setup
+2. Clone the repository to your system
+3. Navigate to the location you saved the in the command line and run: docker compose up -d
